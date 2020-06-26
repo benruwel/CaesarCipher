@@ -28,4 +28,11 @@ public class EncodeTest {
         char [] expectedOutput = testEncode.getInputString().toCharArray();
         assertArrayEquals(expectedOutput, testEncode.convertInputToCharArray());
     }
+
+    @Test
+    public void runEncode_getAlphabetIndex() {
+        Encode testEncode = new Encode("Hello world", 2);
+        Integer expectedOutput = "abc".indexOf('a');
+        assertEquals(expectedOutput, testEncode.getAlphabetIndex());
+    }
 }
