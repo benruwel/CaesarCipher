@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Encode {
     private String mInputString;
     private Integer mCipherKey;
-    private String mAlphabets = "abcdefghijklmnopqrstuvwxyz";
+    private String mAlphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public Encode(String inputString, Integer cipherKey ) {
         this.mInputString = inputString;
@@ -14,7 +14,7 @@ public class Encode {
     }
 
     public String getInputString() {
-        return mInputString;
+        return mInputString.toUpperCase();
     }
 
     public Integer getInputCipherKey() {
@@ -22,19 +22,28 @@ public class Encode {
     }
 
     public char[] convertInputToCharArray() {
-        return this.mInputString.toCharArray();
+        return getInputString().toCharArray();
     }
 
-    public Integer getAlphabetIndex() {
-        return mAlphabets.indexOf('a');
+    public Integer getAlphabetIndex(char inputChar) {
+        return mAlphabets.indexOf(inputChar);
     }
 
-    public Character loopThroughAlphabet() {
-        List<Character> alphabetCharacter = new ArrayList<>();
-        for (int i = 0; i < convertInputToCharArray().length ; i++) {
-            alphabetCharacter.add(convertInputToCharArray()[i]);
+    public List<Integer> loopThroughInputCharArray() {
+        List<Integer> alphabetCharacterIndex = new ArrayList<>();
+        for (char inputChar : convertInputToCharArray()) {
+            alphabetCharacterIndex.add(getAlphabetIndex(inputChar));
         }
+        return alphabetCharacterIndex;
+    }
+    public List<Integer> addCipherKeyToInputIndices() {
+        List<Integer> alphabetCharacterIndexWithCipher = new ArrayList<>();
+        for (Integer inputIndex : loopThroughInputCharArray()) {
 
+            inputIndex +=  getInputCipherKey();
+            alphabetCharacterIndexWithCipher.add(inputIndex);
+        }
+        return alphabetCharacterIndexWithCipher;
     }
 
 }
