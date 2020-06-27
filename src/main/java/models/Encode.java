@@ -38,11 +38,13 @@ public class Encode {
     }
     public List<Integer> addCipherKeyToInputIndices() {
         List<Integer> alphabetCharacterIndexWithCipher = new ArrayList<>();
-        for (Integer inputIndex : loopThroughInputCharArray()) {
-
-            inputIndex +=  getInputCipherKey();
-            alphabetCharacterIndexWithCipher.add(inputIndex);
-        }
+        for (Integer inputIndex : loopThroughInputCharArray())
+            if (inputIndex >= 0) {
+                inputIndex = (inputIndex + getInputCipherKey()) % 26;
+                alphabetCharacterIndexWithCipher.add(inputIndex);
+            } else {
+                alphabetCharacterIndexWithCipher.add(inputIndex);
+            }
         return alphabetCharacterIndexWithCipher;
     }
 
