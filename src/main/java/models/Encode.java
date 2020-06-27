@@ -48,4 +48,16 @@ public class Encode {
         return alphabetCharacterIndexWithCipher;
     }
 
+    public List<Character> convertCipheredIndices(){
+        List<Character> cipheredCharacters = new ArrayList<>();
+        for (Integer cipherIndex : addCipherKeyToInputIndices()) {
+            if (cipherIndex >= 0){
+                cipheredCharacters.add(mAlphabets.charAt(cipherIndex));
+            }else {
+                cipheredCharacters.add(' ');
+            }
+        }
+        return cipheredCharacters;
+    }
+
 }
