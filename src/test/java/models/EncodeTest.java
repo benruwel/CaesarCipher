@@ -3,6 +3,7 @@ package models;
 import org.junit.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -40,7 +41,7 @@ public class EncodeTest {
         assertEquals(expectedOutput, testEncode.getAlphabetIndex('A'));
     }
     @Test
-    public void runEncode_getIndexOfInputCharInAlphabets_loopThroughInputCharArray(){
+    public void loopThroughCharArray_storingCharIndexInArray_Integer(){
         Encode testEncode = new Encode("Hello world", 2);
         List<Integer> expectedOutput = new ArrayList<>();
         for (char expectedInputChar : testEncode.convertInputToCharArray()) {
@@ -50,8 +51,26 @@ public class EncodeTest {
     }
 
     @Test
-    public void runEncode_incrementingCharIndexByTheCipherKey_addCipherKeyToInputIndices() {
+    public void addCipherKeyToInputIndices_incrementingCharIndexByTheCipherKey_Integer() {
         Encode testEncode = new Encode("Hello world", 2);
-        
+        List<Integer> expectedOutput = new ArrayList<>();
+        Integer[] expectedIntArray = {9, 6, 13, 13, 16, -1, 24, 16, 19, 13, 5};
+        expectedOutput.addAll(Arrays.asList(expectedIntArray));
+        assertEquals(expectedOutput, testEncode.addCipherKeyToInputIndices());
+        }
+    @Test
+    public void convertCipheredIndicesToCharArray_getCharsFromAlphabetWithIndices_ListCharacter() {
+        Encode testEncode = new Encode("Hello world", 2);
+        List<Character> expectedOutput = new ArrayList<>();
+        Character[] expectedCharArray = {'J', 'G', 'N', 'N', 'Q',' ', 'Y', 'Q', 'T', 'N', 'F'};
+        expectedOutput.addAll(Arrays.asList(expectedCharArray));
+        assertEquals(expectedOutput, testEncode.convertCipheredIndicesToCharArray());
+    }
+
+    @Test
+    public void convertCipheredChars_charsToString_String() {
+        Encode testEncode = new Encode("Hello world", 2);
+        String expectedOutput = "JGNNQ YQTNF";
+        assertEquals(expectedOutput, testEncode.convertCipheredChars());
     }
 }

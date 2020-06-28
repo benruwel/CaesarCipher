@@ -1,7 +1,5 @@
 package models;
 
-import java.util.Arrays;
-import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -51,7 +49,7 @@ public class Encode {
         return alphabetCharacterIndexWithCipher;
     }
 
-    public List<Character> convertCipheredIndicesToArray(){
+    public List<Character> convertCipheredIndicesToCharArray(){
         List<Character> cipheredCharacters = new ArrayList<>();
         for (Integer cipherIndex : addCipherKeyToInputIndices()) {
             if (cipherIndex >= 0){
@@ -64,8 +62,8 @@ public class Encode {
     }
 
     public String convertCipheredChars() {
-        StringBuilder builder = new StringBuilder(convertCipheredIndicesToArray().size());
-        for (Character chr : convertCipheredIndicesToArray()) {
+        StringBuilder builder = new StringBuilder(convertCipheredIndicesToCharArray().size());
+        for (Character chr : convertCipheredIndicesToCharArray()) {
             builder.append(chr);
         }
         return builder.toString();
