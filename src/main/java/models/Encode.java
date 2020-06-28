@@ -1,11 +1,14 @@
 package models;
 
+import java.util.Arrays;
+import java.util.*;
 import java.util.List;
 import java.util.ArrayList;
 
 public class Encode {
     private String mInputString;
     private Integer mCipherKey;
+    private String mEncodedString;
     private String mAlphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public Encode(String inputString, Integer cipherKey ) {
@@ -48,7 +51,7 @@ public class Encode {
         return alphabetCharacterIndexWithCipher;
     }
 
-    public List<Character> convertCipheredIndices(){
+    public List<Character> convertCipheredIndicesToArray(){
         List<Character> cipheredCharacters = new ArrayList<>();
         for (Integer cipherIndex : addCipherKeyToInputIndices()) {
             if (cipherIndex >= 0){
@@ -58,6 +61,14 @@ public class Encode {
             }
         }
         return cipheredCharacters;
+    }
+
+    public String convertCipheredChars() {
+        StringBuilder builder = new StringBuilder(convertCipheredIndicesToArray().size());
+        for (Character chr : convertCipheredIndicesToArray()) {
+            builder.append(chr);
+        }
+        return builder.toString();
     }
 
 }

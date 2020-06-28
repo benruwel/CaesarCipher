@@ -48,4 +48,10 @@ public class EncodeTest {
         }
         assertEquals(expectedOutput, testEncode.loopThroughInputCharArray());
     }
+
+    @Test
+    public void runEncode_incrementingCharIndexByTheCipherKey_addCipherKeyToInputIndices() {
+        Encode testEncode = new Encode("Hello world", 2);
+        
+    }
 }
