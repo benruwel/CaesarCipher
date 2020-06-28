@@ -63,10 +63,17 @@ public class Encode {
 
     public String convertCipheredChars() {
         StringBuilder builder = new StringBuilder(convertCipheredIndicesToCharArray().size());
+        String builtString;
         for (Character chr : convertCipheredIndicesToCharArray()) {
             builder.append(chr);
         }
-        return builder.toString();
+        builtString = builder.toString();
+        mEncodedString = builtString;
+        return mEncodedString;
+    }
+
+    public String getEncodedString() {
+        return mEncodedString;
     }
 
 }
