@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Encode {
     private String mInputString;
     private Integer mCipherKey;
+    private String mEncodedString;
     private String mAlphabets = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public Encode(String inputString, Integer cipherKey ) {
@@ -48,7 +49,7 @@ public class Encode {
         return alphabetCharacterIndexWithCipher;
     }
 
-    public List<Character> convertCipheredIndices(){
+    public List<Character> convertCipheredIndicesToCharArray(){
         List<Character> cipheredCharacters = new ArrayList<>();
         for (Integer cipherIndex : addCipherKeyToInputIndices()) {
             if (cipherIndex >= 0){
@@ -58,6 +59,21 @@ public class Encode {
             }
         }
         return cipheredCharacters;
+    }
+
+    public String convertCipheredChars() {
+        StringBuilder builder = new StringBuilder(convertCipheredIndicesToCharArray().size());
+        String builtString;
+        for (Character chr : convertCipheredIndicesToCharArray()) {
+            builder.append(chr);
+        }
+        builtString = builder.toString();
+        mEncodedString = builtString;
+        return mEncodedString;
+    }
+
+    public String getEncodedString() {
+        return mEncodedString;
     }
 
 }
