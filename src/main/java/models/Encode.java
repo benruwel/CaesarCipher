@@ -61,7 +61,7 @@ public class Encode {
         return cipheredCharacters;
     }
 
-    public String convertCipheredChars() {
+    public String convertCipheredCharsToStrings() {
         StringBuilder builder = new StringBuilder(convertCipheredIndicesToCharArray().size());
         String builtString;
         for (Character chr : convertCipheredIndicesToCharArray()) {

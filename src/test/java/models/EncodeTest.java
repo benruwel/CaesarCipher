@@ -71,6 +71,6 @@ public class EncodeTest {
     public void convertCipheredChars_charsToString_String() {
         Encode testEncode = new Encode("Hello world", 2);
         String expectedOutput = "JGNNQ YQTNF";
-        assertEquals(expectedOutput, testEncode.convertCipheredChars());
+        assertEquals(expectedOutput, testEncode.convertCipheredCharsToStrings());
     }
 }
