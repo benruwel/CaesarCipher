@@ -49,3 +49,6 @@ settings.gradle
 ############
 .idea
 .idea/
+.classpath
+.project
+*.prefs
